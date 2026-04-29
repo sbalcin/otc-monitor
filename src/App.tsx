@@ -1,4 +1,3 @@
-import './App.css'
 import {Header} from "./components/Header.tsx";
 import {KPISummary} from "./components/KPISummary.tsx";
 import {OrderBook} from "./components/OrderBook.tsx";
