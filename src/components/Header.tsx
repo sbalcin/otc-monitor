@@ -1,6 +1,14 @@
 import {useEffect, useState} from "react";
+import {formatTimestamp} from "../utils/format.ts";
 
-export function Header() {
+import {ConnectionDot} from "./ConnectionDot.tsx";
+import type {VenueStatusEntry} from "../types/types.ts";
+
+interface Props {
+    venueStatuses: VenueStatusEntry[]
+}
+
+export function Header({venueStatuses}: Props) {
     const [now, setNow] = useState(() => Date.now())
 
     useEffect(() => {
@@ -27,14 +35,16 @@ export function Header() {
 
 
             <div className="hidden sm:flex items-center gap-4">
-                Binance ..
+                {venueStatuses.map((v) => (
+                    <ConnectionDot key={v.venueId} status={v.status} label={v.label}/>
+                ))}
             </div>
 
             <div className="flex flex-col items-end">
             <span className="num text-xs text-[var(--color-text-primary)]">
-              {now}
+              {formatTimestamp(now)}
             </span>
-                
+
             </div>
         </header>
     )
