@@ -41,5 +41,9 @@ No env variables needed
 **Depth chart** - displaying bid/ask depth curves
 
 
+## 📱 Demo
 
+<p align="center">
+  <img src="./src/assets/01.gif" width="400" alt="demo" />
+</p>
 
