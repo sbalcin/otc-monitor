@@ -6,6 +6,7 @@ import type {Level, LevelDirection} from "../types/types.ts";
 import {calcMid, formatPrice, formatSize, formatSpread, formatStaleness, formatTotal} from "../utils/format.ts";
 import {effectivePriceDecimals, groupLevels, makeGroupingSteps} from "../utils/groupLevels.ts";
 import {useBookDiff} from '../hooks/useBookDiff'
+import {AnimatedPrice} from "./AnimatedPrice.tsx";
 
 interface Props {
     defaultVenueId: string
@@ -228,7 +229,7 @@ export function OrderBook({defaultVenueId, defaultPairId, onStatusChange}: Props
                     className="flex items-center justify-between px-3 py-1.5 bg-[var(--color-surface-3)] border-y border-[var(--color-border)]">
                     <div className="flex items-center gap-2">
                         <span className="text-[10px] uppercase tracking-wider text-[var(--color-text-muted)]">Mid</span>
-                        {mid && formatPrice(mid, priceDecimals)}
+                        <AnimatedPrice value={mid} decimals={priceDecimals} />
                     </div>
                     <div className="flex items-center gap-3">
                         <div className="flex items-center gap-1.5">
