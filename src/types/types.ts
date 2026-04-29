@@ -25,3 +25,22 @@ export interface VenueConfig {
     createAdapter: () => VenueAdapter
     supportedPairs: string[]
 }
+
+export interface KPIData {
+    portfolioValue: number
+    unrealisedPnl: number
+    netDelta: number
+    openPositions: number
+}
+
+export type PositionType = 'Spot' | 'Option' | 'Perpetual'
+
+export interface Position {
+    id: string
+    asset: string
+    type: PositionType
+    notional: number
+    pnl: number
+    delta: number
+    expiry: string | null
+}
