@@ -6,17 +6,19 @@ export type ConnectionStatus =
     | 'error'
     | 'closed'
 
+export type VenueStatusMap = Record<string, ConnectionStatus>
+
 export interface VenueStatusEntry {
     venueId: string
     label: string
-    status: ConnectionStatus | string
+    status: ConnectionStatus
 }
 
 export interface VenueAdapter {
-
     connect(pair: string): void
-
     disconnect(): void
+    onSnapshot(cb: (snap: OrderBookSnapshot) => void): void
+    onStatusChange(cb: (status: ConnectionStatus) => void): void
 }
 
 export interface VenueConfig {
@@ -43,4 +45,20 @@ export interface Position {
     pnl: number
     delta: number
     expiry: string | null
+}
+
+export interface Level {
+    price: number
+    size: number
+}
+
+export type LevelDirection = 'up' | 'down'
+
+export interface OrderBookSnapshot {
+    venue: string
+    pair: string
+    bids: Level[]
+    asks: Level[]
+    timestamp: number
+    sequenceId?: number
 }

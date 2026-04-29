@@ -16,3 +16,8 @@ export const VENUE_REGISTRY: Record<string, VenueConfig> = {
         supportedPairs: ['BTC-USD', 'ETH-USD', 'SOL-USD'],
     },
 }
+
+export const DEFAULT_VENUES = {
+    panel1: { venueId: 'binance', pairId: 'BTC-USDT' },
+    panel2: { venueId: 'bitstamp', pairId: 'ETH-USD' },
+} as const

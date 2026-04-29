@@ -1,7 +1,7 @@
 import type {ConnectionStatus} from "../types/types.ts";
 
 interface Props {
-    status: ConnectionStatus | string
+    status: ConnectionStatus
     label: string
 }
 

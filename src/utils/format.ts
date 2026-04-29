@@ -37,4 +37,39 @@ export function formatNotional(value: number): string {
     return formatCurrency(value, true)
 }
 
+export function formatStaleness(ms: number): string {
+    if (ms < 1000) return '<1s ago'
+    if (ms < 60_000) return `${Math.floor(ms / 1000)}s ago`
+    return `${Math.floor(ms / 60_000)}m ago`
+}
+
+
+export function formatPrice(value: number, decimals: number): string {
+    return value.toLocaleString('en-US', {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+    })
+}
+
+export function formatSize(value: number, decimals: number): string {
+    return value.toLocaleString('en-US', {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+    })
+}
+
+export function formatTotal(value: number): string {
+    return value.toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    })
+}
+
+export function calcMid(bestBid: number, bestAsk: number): number {
+    return (bestBid + bestAsk) / 2
+}
+
+export function formatSpread(bestBid: number, bestAsk: number, priceDecimals: number): string {
+    return (bestAsk - bestBid).toFixed(priceDecimals)
+}
 
